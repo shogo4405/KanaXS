@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Kana.XS" default="default" basedir="../">
+
+	<property name="FLEX_HOME" value="C:/flex3"/>
+
+	<property name="dir.lib" value="lib" />
+	<property name="dir.bin" value="bin" />
+	<property name="dir.sample" value="sample" />
+	<property name="version" value="1.1.0" />
+
+	<property name="dir.js" value="${basedir}/src/javascript" />
+	<property name="dir.as3" value="${basedir}/src/actionscript3" />
+	<property name="dir.java" value="${basedir}/src/java" />
+
+
+	<!-- require utiljs.jar >= 0.0.3 -->
+	<taskdef resource="utiljs.tasks">
+		<classpath><fileset dir="build/classes"><include name="*.jar"/></fileset></classpath>
+	</taskdef>
+
+	<taskdef resource="flexTasks.tasks">
+		<classpath><fileset dir="build/classes"><include name="*.jar"/></fileset></classpath>
+	</taskdef>
+
+	<!--default-->
+	<target name="default" depends="kana-js,kana-java,kana-as3">
+	</target>
+
+	<!--kana.js-->
+	<target name="kana-js">
+		<mkdir dir="${dir.lib}" />
+		<concat destfile="${dir.lib}/kana-${version}.js" encoding="UTF-8">
+			<fileset dir="${dir.js}" includes="*.js" />
+			<filterchain><stripjavacomments /></filterchain>
+		</concat>
+		<yuic verbose="on" destFile="${dir.lib}/kana-${version}-min.js" srcFile="${dir.lib}/kana-${version}.js" />
+	</target>
+
+	<!--kana.java-->
+	<target name="kana-java">
+		<delete dir="${dir.bin}/java" />
+		<mkdir dir="${dir.bin}/java" />
+		<javac destdir="${dir.bin}/java" srcdir="${dir.java}" fork="true" encoding="UTF-8" />
+		<jar destfile="${dir.lib}/kana-${version}.jar" basedir="${dir.bin}/java" />
+	</target>
+
+	<!--kana.as3-->
+	<target name="kana-as3">
+		<compc
+			output="${dir.lib}/kana-${version}.swc"
+			include-classes="com.googlecode.kanaxs.KanaUtil"
+			locale="en_US">
+			<source-path path-element="${dir.as3}" /> 
+		</compc>
+		<mxmlc
+			file="${dir.as3}/kanaas.mxml"
+			output="${dir.sample}/kanaas.swf"
+			keep-generated-actionscript="false">
+			<compiler.include-libraries dir="${dir.lib}" append="true">
+				<include name="kana-${version}.swc" />
+			</compiler.include-libraries>
+		</mxmlc>
+		<html-wrapper
+			title="Kana.AS"
+			file="kanaas.html"
+			height="100%"
+			width="100%"
+			bgcolor="red"
+			application="app"
+			swf="kanaas"
+			version-major="9"
+			version-minor="0"
+			version-revision="0"
+			history="true"
+			template="express-installation"
+			output="${dir.sample}"/>
+		<!--cleanup-->
+		<delete dir="${dir.as3}/generated" />
+	</target>
+
+</project>
