@@ -69,7 +69,7 @@ public final class KanaUtil
 		H2Z.put('\uFF93','\u30E2');
 		H2Z.put('\uFF94','\u30E4');
 		H2Z.put('\uFF95','\u30E6');
-		H2Z.put('\uFF95','\u30E8');
+		H2Z.put('\uFF96','\u30E8');
 		H2Z.put('\uFF97','\u30E9');
 		H2Z.put('\uFF98','\u30EA');
 		H2Z.put('\uFF99','\u30EB');
