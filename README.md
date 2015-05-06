@@ -2,10 +2,14 @@
 半角、全角などの相互変換ライブラリーです。
 言語としては、Java、JavaScript、ActionScript3版があります。
 
+## リンク
+どぼん！さんが.NETな環境でつかえるC#版を公開されています。
+http://wiki.dobon.net/index.php?free%2FkanaxsCSharp
+
 ### ライセンス情報
 The MIT License (MIT)です。
 
-Copyright (c) 2008 shogo440/ENDO Shogo
+Copyright (c) 2008 shogo4405/ENDO Shogo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
