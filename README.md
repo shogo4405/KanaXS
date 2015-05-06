@@ -7,7 +7,7 @@
 http://wiki.dobon.net/index.php?free%2FkanaxsCSharp
 
 ### ライセンス情報
-The MIT License (MIT)です。
+New BSD License
 
 Copyright (c) 2007, shogo4405/ENDO Shogo
 All rights reserved.
