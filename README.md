@@ -1,21 +1,33 @@
-## 概要
-半角、全角などの相互変換ライブラリーです。
-言語としては、Java、JavaScript、ActionScript3版があります。
+## KanaXSとは
+半角、全角などの相互変換ライブラリーです。言語としては、Java、JavaScript、ActionScript3版があります。Swift版も公開しています。Cocoapodsに登録するために別のレポジトリーにしました。
+
+## 変換の種類
+次の変換の種類をサポートしています。
+* 「全角英数字」、「半角英数字」での相互変換
+* 「全角ひらがな」、「全角カタカナ」での相互変換
+* 「全角カタカナ」、「半角カタカナ」での相互変換
+
+## 利用方法
+### JavaScript
+String.prototypeを拡張しています。
+```html
+<!-- ライブラリーの読み込み。githubのリンクするのではなくお持ち帰り推奨。 -->
+<script type="text/javascript" src="/path/to/kana-X.X.X-min.js"></script>
+<script type="text/javascript">
+"Hello World!!".toZenkakuCase() // Ｈｅｌｌｏ　Ｗｏｒｌｄ！！
+"Ｈｅｌｌｏ　Ｗｏｒｌｄ！！".toHankakuCase() // Hello World!!
+"こんにちわ世界".toKatakanaCase() // コンニチワ世界
+"コンニチワ世界".toHiraganaCase() // こんにちわ世界
+"コンニチワ世界".toHankanaCase() // ｺﾝﾆﾁﾜ世界
+"ｺﾝﾆﾁﾜ世界".toZenkanaCase() // コンニチワ世界
+</script>
+```
 
 ## リンク
-どぼん！さんが.NETな環境でつかえるC#版を公開されています。
-http://wiki.dobon.net/index.php?free%2FkanaxsCSharp
+* Swift版もあります。
+ * https://github.com/shogo4405/KanaSwift
+* どぼん！さんが.NETな環境でつかえるC#版を公開されています。
+ * http://wiki.dobon.net/index.php?free%2FkanaxsCSharp
 
 ### ライセンス情報
-New BSD License
-
-Copyright (c) 2007, shogo4405/ENDO Shogo
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-* Neither the name of the <ORGANIZATION> nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+New BSD Licenseです。詳しくはLICENSEを参照ください。
